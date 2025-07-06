@@ -153,7 +153,7 @@ public class SistemaTestes {
     }
 
     @Test
-    void testVisualizarGastoNoGastos() {
+    void testVisualizarGastoSemGastos() {
         Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
@@ -164,8 +164,8 @@ public class SistemaTestes {
     }
 
     @Test
-    void testRemoveGastoSuccess() {
-        Usuario u1 = new Usuario("user1", "pass1", "20", "111");
+    void testRemoveGastoSucesso() {
+        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -178,8 +178,8 @@ public class SistemaTestes {
     }
 
     @Test
-    void testRemoveGastoNonExistentGasto() {
-        Usuario u1 = new Usuario("user1", "pass1", "20", "111");
+    void testRemoveGastoExisteGasto() {
+        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -197,7 +197,7 @@ public class SistemaTestes {
 
     @Test
     void testBuscarGastoPorIdFound() {
-        Usuario u1 = new Usuario("user1", "pass1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -214,7 +214,7 @@ public class SistemaTestes {
 
     @Test
     void testBuscarGastoPorIdNotFound() {
-        Usuario u1 = new Usuario("user1", "pass1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -223,4 +223,44 @@ public class SistemaTestes {
 
         assertNull(sistema.buscarGastoPorId(u1.getContas(), 999)); 
     }
+    
+    @Test
+    void testBuscarGastoAno() {
+    	 LocalDate data = LocalDate.now();
+    	 int i = data.getYear();
+    
+    	 Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+         sistema.cadastrarUsuario(u1);
+         sistema.setUsuarios(u1);
+
+         Gasto g1 = new Gasto("Existente", data, 50.0f, TipoGasto.Comida, u1.getId());
+         sistema.cadastrarGasto(u1, g1);
+
+         Gasto g2 = new Gasto("Existe existe", data, 60.0f, TipoGasto.Lazer, u1.getId());
+         sistema.cadastrarGasto(u1, g2);
+         
+         assertTrue(sistema.visualizarGastoAnual(u1, i).contains(g1));
+         assertTrue(sistema.visualizarGastoAnual(u1, i).contains(g2));
+
+         
+    }
+    
+    @Test
+    void testBuscarGastoAnoNaoExiste() {
+   	 LocalDate data = LocalDate.now();
+   	 int i = data.getYear();
+   	 Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+        sistema.cadastrarUsuario(u1);
+        sistema.setUsuarios(u1);
+
+        Gasto g1 = new Gasto("Existente", data, 50.0f, TipoGasto.Comida, u1.getId());
+        sistema.cadastrarGasto(u1, g1);
+
+        Gasto g2 = new Gasto("Existe existe", data, 60.0f, TipoGasto.Lazer, u1.getId());
+        sistema.cadastrarGasto(u1, g2);
+        
+        assertTrue(sistema.visualizarGastoAnual(u1, -10).isEmpty());
+        assertTrue(sistema.visualizarGastoAnual(u1, i+1).isEmpty());
+        
+   }
 }

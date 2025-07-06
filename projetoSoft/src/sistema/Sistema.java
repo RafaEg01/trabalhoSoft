@@ -114,6 +114,20 @@ public class Sistema {
 		}
 
 	}
+	
+	public LinkedList<Gasto> visualizarGastoAnual(Usuario u, int i){
+		LinkedList<Gasto> aux = new LinkedList<Gasto>();
+		for(TipoGasto tipo : TipoGasto.values()) {
+			aux.addAll(u.getContas().get(tipo));
+		}
+		LinkedList<Gasto> aux1 = new LinkedList<Gasto>();
+		for(Gasto gastos : aux) {
+			if(gastos.getData().getYear() == i) {
+				aux1.add(gastos);
+			}
+		}
+		return aux1;
+	}
 
 	public boolean equals(Gasto g1, Gasto g2){
 		if(g1.getId() == g2.getId()) {

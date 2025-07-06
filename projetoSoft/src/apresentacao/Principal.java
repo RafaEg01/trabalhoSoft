@@ -77,6 +77,7 @@ public class Principal {
 		System.out.println("1 - Cadastrar Gasto");
 		System.out.println("2 - Visualizar Gastos");
 		System.out.println("3 - Deletar Gasto");
+		System.out.println("4 - Visualizar Gastos Anual");
 
 	}
 
@@ -107,6 +108,10 @@ public class Principal {
 			case 3:
 				deletarGasto(sistema.getLogadoAtual());
 				break;
+			case 4:
+				visualizarGastoYear(sistema.getLogadoAtual());
+				break;
+				
 			}
 		}
 
@@ -187,6 +192,16 @@ public class Principal {
 		 int id = Integer.parseInt(scan.nextLine());
 		 sistema.removeGasto(u, sistema.buscarGastoPorId(u.getContas(), id));
 
+	 }
+	 
+	 public static void visualizarGastoYear(Usuario u) {
+		 System.out.println("Qual o ano que você deseja filtrar");
+		 int i = Integer.parseInt(scan.nextLine());
+		 if(sistema.visualizarGastoAnual(u,i).size() != 0) {
+			 System.out.println(sistema.visualizarGastoAnual(u,i));
+		 }else {
+			 System.out.println("Nenhum gasto com essa data foi encontrado");
+		 }
 	 }
 
 
