@@ -18,7 +18,7 @@ public class UsuarioTest {
 
     @BeforeEach
     void setUp() {
-        usuario = new Usuario("testeUsuario", "testeSenha", "30", "12345678900");
+        usuario = new Usuario("testeUsuario", "testeSenha", 30, "12345678900");
     }
 
     @Test
@@ -26,7 +26,7 @@ public class UsuarioTest {
         assertNotNull(usuario);
         assertEquals("testeUsuario", usuario.getLogin());
         assertEquals("testeSenha", usuario.getSenha());
-        assertEquals("30", usuario.getIdade());
+        assertEquals(30, usuario.getIdade());
         assertEquals("12345678900", usuario.getCpf());
         assertNotNull(usuario.getContas());
     }
@@ -39,8 +39,8 @@ public class UsuarioTest {
         usuario.setSenha("testeSenha");
         assertEquals("testeSenha", usuario.getSenha());
 
-        usuario.setIdade("25");
-        assertEquals("25", usuario.getIdade());
+        usuario.setIdade(25);
+        assertEquals(25, usuario.getIdade());
 
         usuario.setCpf("00987654321");
         assertEquals("00987654321", usuario.getCpf());

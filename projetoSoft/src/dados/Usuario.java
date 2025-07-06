@@ -8,11 +8,11 @@ public class Usuario {
 	private int id;
 	private String login;
 	private String senha;
-	private String idade;
+	private int idade;
 	private String cpf;
 	EnumMap<TipoGasto, LinkedList<Gasto>> contas = new EnumMap<TipoGasto, LinkedList<Gasto>>(TipoGasto.class);
 	
-	public Usuario(String login, String senha, String idade, String cpf){
+	public Usuario(String login, String senha, int idade, String cpf){
 		this.login = login;
 		this.senha = senha;
 		this.idade = idade;
@@ -56,10 +56,10 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getIdade() {
+	public int getIdade() {
 		return idade;
 	}
-	public void setIdade(String idade) {
+	public void setIdade(int idade) {
 		this.idade = idade;
 	}
 	public String getCpf() {

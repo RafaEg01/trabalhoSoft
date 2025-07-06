@@ -34,7 +34,7 @@ public class SistemaTestes {
 
     @Test
     void testCadastrarUsuarioSuccess() {
-        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
         assertTrue(sistema.cadastrarUsuario(u1));
         sistema.setUsuarios(u1); 
         assertTrue(sistema.getUsuarios().contains(u1));
@@ -43,11 +43,11 @@ public class SistemaTestes {
 
     @Test
     void testCadastrarUsuarioDuplicateLogin() {
-        Usuario u1 = new Usuario("NomeIgual", "senha1", "20", "111");
+        Usuario u1 = new Usuario("NomeIgual", "senha1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
-        Usuario u2 = new Usuario("NomeIgual", "senha2", "25", "222");
+        Usuario u2 = new Usuario("NomeIgual", "senha2", 25, "222");
         assertFalse(sistema.cadastrarUsuario(u2)); // Login duplicado
         assertEquals(1, sistema.getUsuarios().size()); // Existir só 1 usuario
     }
@@ -60,7 +60,7 @@ public class SistemaTestes {
 
     @Test
     void testLoginUsuarioSuccess() {
-        Usuario u1 = new Usuario("NomeLogin", "senha1", "20", "111");
+        Usuario u1 = new Usuario("NomeLogin", "senha1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -72,7 +72,7 @@ public class SistemaTestes {
 
     @Test
     void testLoginUsuarioSenhaErrada() {
-        Usuario u1 = new Usuario("NomeLogin", "pass1", "20", "111");
+        Usuario u1 = new Usuario("NomeLogin", "pass1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -96,7 +96,7 @@ public class SistemaTestes {
 
     @Test
     void testLogout() {
-        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
         sistema.loginUsuario("Usuario", "senha1");
@@ -108,7 +108,7 @@ public class SistemaTestes {
 
     @Test
     void testCadastrarGasto() {
-        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1); 
 
@@ -126,13 +126,13 @@ public class SistemaTestes {
 
     @Test
     void testCadastrarGastoNullGasto() {
-        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
         assertFalse(sistema.cadastrarGasto(u1, null));
     }
 
     @Test
     void testVisualizarGastoMultiploTipo() {
-        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -154,7 +154,7 @@ public class SistemaTestes {
 
     @Test
     void testVisualizarGastoSemGastos() {
-        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -165,7 +165,7 @@ public class SistemaTestes {
 
     @Test
     void testRemoveGastoSucesso() {
-        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -179,7 +179,7 @@ public class SistemaTestes {
 
     @Test
     void testRemoveGastoExisteGasto() {
-        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -197,7 +197,7 @@ public class SistemaTestes {
 
     @Test
     void testBuscarGastoPorIdFound() {
-        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -214,7 +214,7 @@ public class SistemaTestes {
 
     @Test
     void testBuscarGastoPorIdNotFound() {
-        Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+        Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 
@@ -229,7 +229,7 @@ public class SistemaTestes {
     	 LocalDate data = LocalDate.now();
     	 int i = data.getYear();
     
-    	 Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+    	 Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
          sistema.cadastrarUsuario(u1);
          sistema.setUsuarios(u1);
 
@@ -249,7 +249,7 @@ public class SistemaTestes {
     void testBuscarGastoAnoNaoExiste() {
    	 LocalDate data = LocalDate.now();
    	 int i = data.getYear();
-   	 Usuario u1 = new Usuario("Usuario", "senha1", "20", "111");
+   	 Usuario u1 = new Usuario("Usuario", "senha1", 20, "111");
         sistema.cadastrarUsuario(u1);
         sistema.setUsuarios(u1);
 

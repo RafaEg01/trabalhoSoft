@@ -123,10 +123,10 @@ public class Principal {
 		System.out.println("Qual Senha do usuario");
 		String senha = scan.nextLine();
 		System.out.println("Qual Idade do usuario");
-		String idade = scan.nextLine();
+		int idade = Integer.parseInt(scan.nextLine());
 		System.out.println("Qual CPF do usuario");
 		String cpf = scan.nextLine();
-
+;
 		Usuario u = new Usuario(login,senha,idade,cpf);
 
 		if(sistema.cadastrarUsuario(u)) {
